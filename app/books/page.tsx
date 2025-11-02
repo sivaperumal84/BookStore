@@ -173,6 +173,7 @@ export default function BooksPage() {
             <h1 className="text-2xl font-bold text-gray-900">BookStore</h1>
           </div>
           <div className="flex items-center gap-4">
+            <span className="text-gray-700 text-sm">{userEmail}</span>
             <button
               onClick={() => setShowCart(!showCart)}
               className="relative flex items-center text-gray-600 hover:text-gray-900"

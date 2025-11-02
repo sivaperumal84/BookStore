@@ -12,6 +12,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const [showAddModal, setShowAddModal] = useState(false)
   const [editingBook, setEditingBook] = useState<Book | null>(null)
+  const [userEmail, setUserEmail] = useState<string>('')
   const [formData, setFormData] = useState({
     title: '',
     author: '',
@@ -32,6 +33,8 @@ export default function AdminDashboard() {
       router.push('/login')
       return
     }
+
+    setUserEmail(session.user.email || '')
 
     const { data: profile } = await supabase
       .from('profiles')
@@ -175,13 +178,16 @@ export default function AdminDashboard() {
             <BookOpen className="w-8 h-8 text-primary-600 mr-3" />
             <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
           </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center text-gray-600 hover:text-gray-900"
-          >
-            <LogOut className="w-5 h-5 mr-2" />
-            Logout
-          </button>
+          <div className="flex items-center gap-4">
+            <span className="text-gray-700 text-sm">{userEmail}</span>
+            <button
+              onClick={handleLogout}
+              className="flex items-center text-gray-600 hover:text-gray-900"
+            >
+              <LogOut className="w-5 h-5 mr-2" />
+              Logout
+            </button>
+          </div>
         </div>
       </header>
 
