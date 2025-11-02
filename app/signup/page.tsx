@@ -38,19 +38,7 @@ export default function SignUp() {
       if (error) throw error
 
       if (data.user) {
-        // Create profile (non-admin by default)
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert([
-            {
-              id: data.user.id,
-              email: data.user.email,
-              is_admin: false,
-            },
-          ])
-
-        if (profileError) throw profileError
-
+        // Profile is automatically created by database trigger
         toast.success('Account created successfully!')
         router.push('/books')
       }
