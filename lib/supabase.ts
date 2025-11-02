@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 
+<<<<<<< HEAD
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
@@ -10,6 +11,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+=======
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+ 
+>>>>>>> f953fe56b00eec76ecd1d2e77592122f57224bde
 
 export type Book = {
   id: string
